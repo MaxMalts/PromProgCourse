@@ -1,0 +1,32 @@
+Я не очень понял формулировку задания, поэтому посчитал (1) максимальные branch coverage при однократном вызове функций и (2) итоговый branch coverage, после запуска всех моих тестов:
+
+(1):
+
+Simple Library:
+
+add(): 100%
+is_leap(): 4 / 8 * 100% = 50%
+get_month_days(): 4 / 10 * 100% = 40% (вызываем с такими параметрами, чтобы ни один if не удовлетворился)
+
+Tree Utils:
+
+SizeTree.construct_filenode(): 1 / 2 * 100% = 50%
+SizeTree.update_filenode(): 100%
+Tree.get(): 8 / 16 * 100% = 50% (вызываем с аргументом current_path - путь до папки, содержащей файлы и пустую подпапку, dirs_only=False; считаем, чтоб цикл - это 2 ветки)
+Tree.construct_filenode(): 100%
+Tree.update_filenode(): 100%
+Tree.filter_empty_nodes(): 6 / 6 * 100% = 100% (вызываем от папки, содержащей пустую подпапку и файл; считаем, что цикл - это 2 ветки)
+
+Weather:
+
+get(): 100%
+get_response_city(): 1 / 2 * 100% = 50%
+get_temperature(): 100%
+get_tomorrow_temperature(): 100%
+find_diff_two_cities(): 100%
+get_diff_string(): 1 / 2 * 100% = 50%
+get_tomorrow_diff(): 4 / 8 * 100% = 50% (считаем, что elif интерпретируется как else {if (...) {...}})
+
+(2):
+
+Суммарный branch coverage после запуска всех моих тестов во всех проектах составляет 100%, кроме tree.py. В нем он равен 98%, потому что в 41 строке выражение всегда True
